@@ -70,6 +70,8 @@ x.add(2, "x");		// trace this one
 
 
 The initial state of the object is
+
+![image](https://user-images.githubusercontent.com/25979883/112764745-a87fbc80-9027-11eb-99be-d21f5e3922ed.png)
  
 
 The object has been initialized, so checkInitialization() returns.
@@ -78,17 +80,25 @@ Since newPosition=2,  the condition ((newPosition >= 1) && (newPosition <= numbe
 
 The condition newPosition <= numberOfEntries is also true, so we invoke the method makeRoom(2). 
 
+![image](https://user-images.githubusercontent.com/25979883/112764761-b8979c00-9027-11eb-8c3a-69943a85d848.png)
+
  
 We set the local variables newIndex to 2 and lastIndex to 4 resulting in the following state.
 newPosition: 2
 newIndex: 2
 lastIndex: 4
- 
+
+ ![image](https://user-images.githubusercontent.com/25979883/112764767-bc2b2300-9027-11eb-9b2e-84e36605d57b.png)
+
+
 Now we do the for loop in makeRoom, we start index at lastIndex and then execute list[index + 1] = list[index].  We are in the following state.
 newPosition: 2
 newIndex: 2
 lastIndex: 4
 index: 4
+
+![image](https://user-images.githubusercontent.com/25979883/112764777-c51bf480-9027-11eb-9e04-1f3ac66ae202.png)
+
  
 
 We update the loop index by sutracting 1 and then compare the result with newIndex.  Since 3 is >= 2, we continue with a second execution of the body of the loop.  After it is done, we are in the following state.
@@ -96,6 +106,8 @@ newPosition: 2
 newIndex: 2
 lastIndex: 4
 index: 3
+![image](https://user-images.githubusercontent.com/25979883/112764784-ccdb9900-9027-11eb-8b26-884948c44468.png)
+
  
 
 Again,we update the loop index by sutracting 1 and then compare the result with newIndex.  Since 2 is >= 2, we continue with a third execution of the body of the loop.  After it is done, we are in the following state.
@@ -103,6 +115,8 @@ newPosition: 2
 newIndex: 2
 lastIndex: 4
 index: 2
+![image](https://user-images.githubusercontent.com/25979883/112764790-cfd68980-9027-11eb-8492-815bfc2a271f.png)
+
  
 Again,we update the loop index by sutracting 1 and then compare the result with newIndex.  Since 1 is not  >= 2, we exit the loop and then return to add from the makeRoom method.
 
@@ -110,16 +124,22 @@ Again,we update the loop index by sutracting 1 and then compare the result with 
 The next line in the add method puts newEntry into the array at newPosition.  
 newPosition: 2
 newEntry: "x"
+![image](https://user-images.githubusercontent.com/25979883/112764833-eda3ee80-9027-11eb-9019-1ffe799b7bb0.png)
+
  
 The next line in the add method adjusts the number of entries.
 newPosition: 2
 newEntry: "x"
+![image](https://user-images.githubusercontent.com/25979883/112764836-f09edf00-9027-11eb-9003-0fa9d53aae2c.png)
+
  
 
 Finally we invoke the ensureCapacity() method.
 The list.length is 26, so we set capacity to 25.
 The numberOfEnties is 5 and capacity is 26, so the condition  numberOfEntries >= capacity is false.  We return from the ensureCapacity() method.
 We return from the add method and the final state of our object is
+![image](https://user-images.githubusercontent.com/25979883/112764855-07ddcc80-9028-11eb-9084-286370177d8a.png)
+
  
 
 Lets contrast this with the add method for the linked implementation of the list. 
@@ -154,6 +174,8 @@ x.add("d");
 x.add(2, "x");		// trace this one
 
 The initial state of the object is
+![image](https://user-images.githubusercontent.com/25979883/112764860-0dd3ad80-9028-11eb-8302-891cfd00481c.png)
+
 
  
 
@@ -162,21 +184,29 @@ A new node is created.
 
 	newPosition: 2
 	newEntry: "x"
+	![image](https://user-images.githubusercontent.com/25979883/112764872-12986180-9028-11eb-9b27-9e8f802193d2.png)
+
  
 The condition (newPosition == 1) is false since the  insertion is not at the front of the list.   The else branch is chosen.  The local variable nodeBefore is set to getNodeAt(1).   Then the variable nodeAfter is set. 
 newPosition: 2
 newEntry: "x"
 isSuccessful: true
+![image](https://user-images.githubusercontent.com/25979883/112764880-1926d900-9028-11eb-9d24-495347f4cd17.png)
+
  
 The next reference for the new node is set to be the node after the insertion point. 
 newPosition: 2
 newEntry: "x"
 isSuccessful: true
+![image](https://user-images.githubusercontent.com/25979883/112764882-1e842380-9028-11eb-8d31-f3c15baed726.png)
+
  
 Finally, the new node is linked into the list by setting the next reference of the node before and the number of entries is updated.
 newPosition: 2
 newEntry: "x"
 isSuccessful: true
+![image](https://user-images.githubusercontent.com/25979883/112764884-2217aa80-9028-11eb-899e-e6542092bdb6.png)
+
 
  
 
@@ -187,11 +217,13 @@ To implement both the reverse and cycle methods, we will be using list surgery. 
 Pre-Lab Visualization
 Array Reverse
 Suppose there is an array based list with the following state:
- 
+ ![image](https://user-images.githubusercontent.com/25979883/112764889-2774f500-9028-11eb-96a8-a30b0e6e535f.png)
+
 
 What will the final state be after reverse()?
    
- 
+ ![image](https://user-images.githubusercontent.com/25979883/112764891-2b087c00-9028-11eb-9243-a761f89f154c.png)
+
 
 To reach the final state, follow these steps.  Show the state of the list after each step.
 
